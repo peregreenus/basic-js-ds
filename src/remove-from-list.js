@@ -26,28 +26,20 @@ function removeKFromList(l, k) {
   let head = l;
   let current = head;
   let prev = null;
-  let idx = 0;
 
   while (current.next) {
-    if (idx === 0) {
-      if (head.value === k) {
-        head = head.next;
-        current = head;
-        prev = current;
-      } else {
-        prev = current;
-        current = current.next;
-      }
-    } else {
-      if (current.value === k) {
-        current = current.next;
-        prev.next = current;
-      } else {
-        prev = current;
-        current = current.next;
-      }
+    if (head.value === k) {
+      head = head.next;
+      current = head;
+      prev = current;
     }
-    idx++;
+    if (current.value === k) {
+      current = current.next;
+      prev.next = current;
+    } else {
+      prev = current;
+      current = current.next;
+    }
   }
 
   if (!current.next && current.value === k) {
